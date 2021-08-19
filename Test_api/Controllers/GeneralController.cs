@@ -25,7 +25,7 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                IEnumerable<SpecialtyViewModel> _result = _GeneralLogic.GetAllSpecialties(out ErrorMessage);
+                IEnumerable<SpecialtyViewModel> _result = await Task.FromResult(_GeneralLogic.GetAllSpecialties(out ErrorMessage));
                 if (_result != null)
                     return Ok(_result);
                 else

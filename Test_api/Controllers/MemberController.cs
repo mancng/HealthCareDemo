@@ -25,7 +25,7 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                IEnumerable<MemberViewModel> _result = _MemberLogic.GetMembers(SearchTerm, out ErrorMessage);
+                IEnumerable<MemberViewModel> _result = await Task.FromResult(_MemberLogic.GetMembers(SearchTerm, out ErrorMessage));
                 if (_result != null)
                     return Ok(_result);
                 else
@@ -44,7 +44,7 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                MemberViewModel _result = _MemberLogic.AddMember(Member, out ErrorMessage);
+                MemberViewModel _result = await Task.FromResult(_MemberLogic.AddMember(Member, out ErrorMessage));
                 if (_result != null)
                     return Ok(_result);
                 else
@@ -64,7 +64,7 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                MemberViewModel _result = _MemberLogic.EditMember(Member, out ErrorMessage);
+                MemberViewModel _result = await Task.FromResult(_MemberLogic.EditMember(Member, out ErrorMessage));
                 if (_result != null)
                     return Ok(_result);
                 else
@@ -83,7 +83,7 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                bool _result = _MemberLogic.DeleteMember(Id, out ErrorMessage);
+                bool _result = await Task.FromResult(_MemberLogic.DeleteMember(Id, out ErrorMessage));
                 if (_result)
                     return Ok(_result);
                 else

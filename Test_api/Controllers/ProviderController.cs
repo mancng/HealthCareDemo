@@ -26,7 +26,9 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                IEnumerable<ProviderViewModel> _result = _ProviderLogic.GetProviders(SearchTerm, out ErrorMessage);
+                //var getData = Task.Run(() => _ProviderLogic.GetProviders(SearchTerm, out ErrorMessage));
+
+                IEnumerable<ProviderViewModel> _result = await Task.FromResult(_ProviderLogic.GetProviders(SearchTerm, out ErrorMessage));
                 if (_result != null)
                     return Ok( _result );
                 else
@@ -45,7 +47,7 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                ProviderViewModel _result = _ProviderLogic.AddProvider(Provider, out ErrorMessage);
+                ProviderViewModel _result = await Task.FromResult(_ProviderLogic.AddProvider(Provider, out ErrorMessage));
                 if (_result != null)
                     return Ok(_result);
                 else
@@ -65,7 +67,7 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                ProviderViewModel _result = _ProviderLogic.EditProvider(Provider, out ErrorMessage);
+                ProviderViewModel _result = await Task.FromResult(_ProviderLogic.EditProvider(Provider, out ErrorMessage));
                 if (_result != null)
                     return Ok(_result);
                 else
@@ -84,7 +86,7 @@ namespace Test_api.Controllers
             {
                 string ErrorMessage;
 
-                bool _result = _ProviderLogic.DeleteProvider(Id, out ErrorMessage);
+                bool _result = await Task.FromResult(_ProviderLogic.DeleteProvider(Id, out ErrorMessage));
                 if (_result)
                     return Ok(_result);
                 else
