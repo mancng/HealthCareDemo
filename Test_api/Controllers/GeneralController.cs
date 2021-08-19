@@ -34,7 +34,7 @@ namespace Test_api.Controllers
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-            }
+            } 
         }
     }
 }

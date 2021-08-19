@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Models.General;
 using Models.Provider;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Test_api.Logic.Interfaces;
 
@@ -25,8 +23,6 @@ namespace Test_api.Controllers
             try
             {
                 string ErrorMessage;
-
-                //var getData = Task.Run(() => _ProviderLogic.GetProviders(SearchTerm, out ErrorMessage));
 
                 IEnumerable<ProviderViewModel> _result = await Task.FromResult(_ProviderLogic.GetProviders(SearchTerm, out ErrorMessage));
                 if (_result != null)
